@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Lil Nil!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            overflow: hidden;
+            font-family: 'Vazir', sans-serif !important;
+            text-align: right;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        .balloon {
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .balloon:nth-child(1) { animation-duration: 6s; left: 10%; }
+        .balloon:nth-child(2) { animation-duration: 7s; left: 30%; }
+        .balloon:nth-child(3) { animation-duration: 8s; left: 50%; }
+        .balloon:nth-child(4) { animation-duration: 5s; left: 70%; }
+        .balloon:nth-child(5) { animation-duration: 9s; left: 90%; }
+
+        @keyframes flash {
+            0%, 100% { background-color: white; }
+            50% { background-color: transparent; }
+        }
+
+        .flash {
+            animation: flash 1s ease-in-out;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 15px;
+            background: #ff6b6b;
+            animation: fall 3s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .confetti:nth-child(odd) {
+            background: #feca57;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .image-size {
+            width: 300px; /* اندازه‌ای که بین بزرگ و کوچک باشه */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .text-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white flex items-center justify-center h-screen relative">
+    <!-- Balloons -->
+    <div class="absolute inset-0 z-10 overflow-hidden">
+        <div class="balloon absolute bottom-0 w-14 h-20 bg-yellow-400 rounded-full shadow-md"></div>
+        <div class="balloon absolute bottom-0 w-14 h-20 bg-red-400 rounded-full shadow-md"></div>
+        <div class="balloon absolute bottom-0 w-14 h-20 bg-green-400 rounded-full shadow-md"></div>
+        <div class="balloon absolute bottom-0 w-14 h-20 bg-blue-400 rounded-full shadow-md"></div>
+        <div class="balloon absolute bottom-0 w-14 h-20 bg-pink-400 rounded-full shadow-md"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="z-20 text-center">
+        <h1 id="title" class="text-4xl md:text-6xl font-extrabold animate-pulse">
+            🎉Happy Birthday Lil Nil! 🎂
+        </h1>
+        <p id="subtitle" class="text-lg md:text-2xl mt-4">
+            Wishing you a day as amazing and vibrant as you are!
+        </p>
+        <button id="surpriseBtn" class="mt-6 px-6 py-2 bg-white text-indigo-600 rounded-lg font-bold hover:bg-indigo-50">
+            🎁 Surprise!
+        </button>
+    </div>
+
+    <!-- Surprise Content -->
+    <div id="surpriseContent" class="hidden text-center">
+        <div class="content-box">
+            <div class="image-container">
+                <img src="Niloufar-1.jpg" alt="Lil Nil's Image" class="image-size">
+                <img src="Niloufar-2.jpg" alt="Lil Nil's Second Image" class="image-size">
+            </div>
+            <div style="text-align: center; line-height: 1.6; font-size: 20px; color: black;">
+                <p>!تولدت مبارک لیل نیل 🎉🎂</p>
+                <p>!امیدوارم امسال یه سال پر از شیطنت، قدرت و لحظات باحال باشه</p>
+                <p>تو همیشه می‌دونی چطور همه رو شاد کنی و با انگیزه‌ات همه رو به حرکت بندازی</p>
+                <p>💪🏼 آماده باش که امسال حتی بیشتر از همیشه توی دنیای ورزش و بدنسازی بدرخشی</p>
+                <p>بدون شک، تو به عنوان یه مهندس خلاق همیشه دنیای اطرافت رو بهتر می‌کنی!</p>
+                <p>پس بیا یه سال دیگه پر از موفقیت، خنده و خوشی داشته باشیم آلبرده 😜❤️</p>
+            </div>            
+        </div>
+    </div>
+
+    <!-- Confetti Placeholder -->
+    <div id="confettiContainer" class="hidden"></div>
+
+    <script>
+        // Surprise Button Click
+        const surpriseBtn = document.getElementById("surpriseBtn");
+        surpriseBtn.addEventListener("click", () => {
+            // Hide main content and show surprise content
+            document.getElementById("mainContent").classList.add("hidden");
+            document.getElementById("surpriseContent").classList.remove("hidden");
+
+            // Show confetti and apply animations
+            const confettiContainer = document.getElementById("confettiContainer");
+            confettiContainer.classList.remove("hidden");
+
+            // Add confetti
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                confettiContainer.appendChild(confetti);
+                // Remove confetti after animation
+                confetti.addEventListener("animationend", () => {
+                    confetti.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
